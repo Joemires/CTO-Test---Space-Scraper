@@ -435,9 +435,7 @@
                                 <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
                                     data-bs-parent="#accordionFAQ">
                                     <div class="accordion-body">
-                                        You can purchase the themes on Bootstrap Themes via any major credit/debit card
-                                        (via Stripe) or with your Paypal account. We don't support cryptocurrencies or
-                                        invoicing at this time.
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde officiis deserunt a laborum ducimus aliquid? Quae unde ipsum, velit praesentium, vitae alias blanditiis nam incidunt inventore et repellendus omnis eveniet.
                                     </div>
                                 </div>
                             </div>
@@ -454,11 +452,7 @@
                                 <div id="collapseTwo" class="accordion-collapse collapse show"
                                     aria-labelledby="headingTwo" data-bs-parent="#accordionFAQ">
                                     <div class="accordion-body">
-                                        If you'd like a refund please reach out to us at <a
-                                            href="#">themes@getbootstrap.com</a>. If you need technical help with the
-                                        theme before a refund please reach out to the seller first and they can get in
-                                        touch
-                                        with us if they're unable to resolve the issue.
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis dolores quo aspernatur. Laboriosam libero aliquid sed magni quisquam corrupti quos veritatis iusto accusantium illo tempora, inventore atque cupiditate, iure accusamus.
                                     </div>
                                 </div>
                             </div>
@@ -476,7 +470,7 @@
                                 <div id="collapseThree" class="accordion-collapse collapse"
                                     aria-labelledby="headingThree" data-bs-parent="#accordionFAQ">
                                     <div class="accordion-body">
-                                        You'll receive an email from Bootstrap themes once your purchase is complete.
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus quibusdam consequuntur facilis eveniet consectetur nesciunt, culpa error reprehenderit, repellendus in mollitia ipsam fugiat. Enim dolore nihil ipsa laudantium, ullam harum.
                                     </div>
                                 </div>
                             </div>
@@ -494,12 +488,7 @@
                                 <div id="collapseFour" class="accordion-collapse collapse"
                                     aria-labelledby="headingFour" data-bs-parent="#accordionFAQ">
                                     <div class="accordion-body">
-                                        There are three license types - <a href="#">Standard</a>, <a
-                                            href="#">Multisite</a>, and <a href="#">Extended</a>. We've provided the
-                                        table below for a quick look at the difference between the them, as well as a
-                                        few examples of ways each license could be used. If you'd like more of the
-                                        nitty-gritty details you can find them below and always feel free to reach out
-                                        with any questions you have at <a href="#">themes@getbootstrap.com</a>.
+                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam, explicabo praesentium veniam officiis deleniti magni? Laudantium magnam, obcaecati vitae commodi nemo repellendus rem, quam rerum, eveniet id soluta explicabo? Alias.
                                     </div>
                                 </div>
                             </div>
