@@ -10,7 +10,7 @@ class UtilController extends Controller
 {
     public function home()
     {
-        $scraps = Scrapper::paginate(10);
+        $scraps = Scrapper::latest()->paginate(10);
         return view('home', compact('scraps'));
     }
 
