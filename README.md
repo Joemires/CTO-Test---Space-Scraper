@@ -1,13 +1,14 @@
 ### Installation
-- Clone this Respository by running ``` git clone https://github.com/Joemires/Space-Scraper cto_test ```
+- Clone this Respository by running ``` git clone https://github.com/Joemires/Space-Scraper yoodule-test && cd yoodule-test && git checkout Yoodule ```
 - Run ``` composer update ```
-- Create a file database/database.sql
 - Run ``` cp .env.example .env ```
 - Run ``` php artisan key:generate ```
-- Edit your .env and change DB_CONNECTION to sqlite
+- Run ``` touch database/database.sqlite ```
 - Run ``` php artisan migrate ```
 - Run ``` npm install ```
-- Start your application and visit the home URL
+- Run ``` php artisan websockets:serve ``` to start your Laravel echo server
+- Run ``` php artisan serve ``` to start your application 
+- Open http://127.0.0.1:8000 in your web browser
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
