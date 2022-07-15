@@ -1,5 +1,5 @@
 ### Installation
-- Clone this Respository by running ``` git clone https://github.com/Joemires/Space-Scraper yoodule-test && cd yoodule-test ```
+- Clone this Respository by running ``` git clone https://github.com/Joemires/Space-Scraper yoodule-test && cd yoodule-test && git checkout Yoodule ```
 - Run ``` composer update ```
 - Run ``` cp .env.example .env ```
 - Run ``` php artisan key:generate ```
