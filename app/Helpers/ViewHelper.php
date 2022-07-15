@@ -10,14 +10,15 @@ if (!function_exists('tidy')) {
      */
     function tidy($html)
     {
-        $config = array(
+        $config = [
             'indent'         => true,
             'output-xhtml'   => true,
             'show-body-only' => true,
-            'wrap'           => 200);
+            'wrap'           => 200
+        ];
 
         // Tidy
-        $tidy = new \tidy;
+        $tidy = new tidy;
         $tidy->parseString($html, $config, 'utf8');
         $tidy->cleanRepair();
 

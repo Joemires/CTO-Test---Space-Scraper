@@ -39,6 +39,9 @@
 </head>
 
 <body>
+@if ($errors->any())
+    {{ dd($errors->all()) }}
+@endif
     <!-- ========== HEADER ========== -->
     <header id="header" class="navbar navbar-expand-lg navbar-light navbar-end bg-white">
         <div class="container">
@@ -223,7 +226,7 @@
                                     </div>
                                     <!-- End Row -->
 
-                                    <form method="POST" action="api/queue/scrap">
+                                    <form method="POST" action="/queue/scrap">
                                         @csrf
                                         <!-- Form -->
                                         <div class="form-group mb-4">
@@ -236,7 +239,7 @@
                                                 </div>
                                                 <input type="text" class="form-control form-control-lg" name="url"
                                                     id="registerName" placeholder="https://jumia.com.ng"
-                                                    aria-label="https://jumia.com.ng" required data-msg="."
+                                                    aria-label="https://jumia.com.ng" data-msg="."
                                                     style="font-size: 16px">
                                             </div>
                                         </div>
@@ -252,7 +255,7 @@
                                                     </div>
                                                 </div>
                                                 <input type="text" class="form-control form-control-lg" name="selector"
-                                                    id="registerEmail" placeholder="#price" aria-label="#price" required
+                                                    id="registerEmail" placeholder="#price" aria-label="#price"
                                                     data-msg="Please enter a valid email address."
                                                     style="font-size: 16px">
                                             </div>
@@ -777,35 +780,35 @@
     <script>
         (function() {
 
-            $('form').submit( function(evt) {
-                evt.preventDefault();
-                var form = $(this);
-                $('#alert-center .container').fadeOut(200).html('');
-                form.find('.btn').prop('disabled', true)
+            // $('form').submit( function(evt) {
+            //     evt.preventDefault();
+            //     var form = $(this);
+            //     $('#alert-center .container').fadeOut(200).html('');
+            //     form.find('.btn').prop('disabled', true)
 
-                $.ajax({
-                    url: 'api/queue/scrap',
-                    method: 'POST',
-                    data: $(this).serialize(),
-                    success: (result) => {
-                        form.find('.btn').prop('disabled', false)
+            //     $.ajax({
+            //         url: 'api/queue/scrap',
+            //         method: 'POST',
+            //         data: $(this).serialize(),
+            //         success: (result) => {
+            //             form.find('.btn').prop('disabled', false)
 
-                        $('#alert-center .container').html(`
-                            <span class="alert alert-success d-flex align-items-center">
-                                <i class="fad fa-check me-3"></i>
-                                Your new scrap has been queued and is currently been handled, please \r <span class="mx-1" style="cursor: pointer; text-decoration: underline" onclick="location.reload()"> click here </span> \r to refresh to know the progress.
-                            </span>
-                        `).fadeIn(200);
+            //             $('#alert-center .container').html(`
+            //                 <span class="alert alert-success d-flex align-items-center">
+            //                     <i class="fad fa-check me-3"></i>
+            //                     Your new scrap has been queued and is currently been handled, please \r <span class="mx-1" style="cursor: pointer; text-decoration: underline" onclick="location.reload()"> click here </span> \r to refresh to know the progress.
+            //                 </span>
+            //             `).fadeIn(200);
 
-                        $([document.documentElement, document.body]).animate({
-                            scrollTop: $("#alert-center").offset().top
-                        }, 1000);
-                    }
-                })
-                .fail((error) => {
+            //             $([document.documentElement, document.body]).animate({
+            //                 scrollTop: $("#alert-center").offset().top
+            //             }, 1000);
+            //         }
+            //     })
+            //     .fail((error) => {
 
-                })
-            })
+            //     })
+            // })
 
             @if(request()->query('page'))
             $([document.documentElement, document.body]).animate({

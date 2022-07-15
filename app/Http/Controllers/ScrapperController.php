@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Jobs\PuppeteerScraper;
 use App\Models\Scrapper;
 use Illuminate\Http\Request;
-
+use Inertia\Inertia;
 use Nesk\Puphpeteer\Puppeteer;
 
 class ScrapperController extends Controller
@@ -17,17 +17,9 @@ class ScrapperController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $scraps = Scrapper::latest()->paginate(10);
+        $scraps = $scraps->setCollection($scraps->getCollection()->each( fn ($scrap) => $scrap->html = (string) tidy(preg_replace('/\s+/', ' ', $scrap->html)) ));
+        return Inertia::render('Home', ['title' => 'Homepage', 'scraps' => $scraps]);
     }
 
     /**
@@ -39,55 +31,12 @@ class ScrapperController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'url' => 'required',
+            'url' => 'required|url',
             'selector' => 'required'
         ]);
 
         PuppeteerScraper::dispatch($validated);
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Scrapper  $scrapper
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Scrapper $scrapper)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Scrapper  $scrapper
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Scrapper $scrapper)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Scrapper  $scrapper
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Scrapper $scrapper)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Scrapper  $scrapper
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Scrapper $scrapper)
-    {
-        //
+        return redirect()->back()->withSuccess('Your request has been submitted successfully');
     }
 }

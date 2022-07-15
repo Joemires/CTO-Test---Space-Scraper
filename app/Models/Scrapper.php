@@ -18,7 +18,7 @@ class Scrapper extends Model
         'url',
         'selector',
         'html',
-        'created_at'
+        // 'created_at'
     ];
 
 }

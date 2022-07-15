@@ -37,12 +37,17 @@ class PuppeteerScraper implements ShouldQueue
      */
     public function handle()
     {
+        // Trigger Socket, notify error
+        $response = collect(['error' => 1, 'message' => 'Sorry, we could not get your selector, please try again with another']);
+
         $data = $this->data;
         // dd($data->get('url'));
         $url = $data->get('url');
         $elem = $data->get('selector');
 
-        $puppeteer = new Puppeteer;
+        $puppeteer = new Puppeteer([
+            'executable_path' => env('NODE_PATH', 'node')
+        ]);
 
         $browser = $puppeteer->launch();
 
@@ -59,6 +64,7 @@ class PuppeteerScraper implements ShouldQueue
                     'url' => $data->get('url'),
                     'selector' => $data->get('selector'),
                     'html' => preg_replace('/\s+/', ' ', $selector->getProperty('outerHTML')->jsonValue()),
+                    // 'html' => tidy($selector->getProperty('outerHTML')->jsonValue()),
                     'created_at' => Carbon::now()
                 ]);
             });
@@ -67,14 +73,19 @@ class PuppeteerScraper implements ShouldQueue
 
             if($collection->count() > 0) {
                 Scrapper::insert($collection->toArray());
-                // Trigger Socket, notify success
-            } else {
-                // Trigger Socket, notify error
-            }
 
+                $scraps = Scrapper::latest()->paginate(10);
+                $scraps = $scraps->setCollection($scraps->getCollection()->each( fn ($scrap) => $scrap->html = (string) tidy(preg_replace('/\s+/', ' ', $scrap->html)) ));
+
+                $response = $response->merge(['error' => 0, 'message' => 'We have gotten your requested data, please check below for the update', 'data' => $scraps]);
+                // Trigger Socket, notify success
+            }
 
         } catch (Node\Exception $exception) {
             // Trigger Socket, notify error
+            $response = $response->merge(['error' => 101, 'message' => 'The was an error trying to get your data, please try again later']);
         }
+
+        event(new \App\Events\Scrapper($response));
     }
 }
