@@ -7,6 +7,7 @@
 - Run ``` php artisan migrate ```
 - Run ``` npm install ```
 - Run ``` php artisan websockets:serve ``` to start your Laravel echo server
+- Edit the NODE_PATH in your .env if you have special installation path for node or leave as default if your node is globally installed 
 - Run ``` php artisan serve ``` to start your application 
 - Open http://127.0.0.1:8000 in your web browser
 
